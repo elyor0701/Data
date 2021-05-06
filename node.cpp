@@ -1,10 +1,16 @@
 #include "node.h"
 
-bool EmptyNode::Evaluate (const Date& date, const string& event) const {
+bool EmptyNode::Evaluate (
+	const Date& date, 
+	const string& event
+	) const {
 	return true;
 }
 	
-bool LogicalOperationNode::Evaluate (const Date& date, const string& event) const {
+bool LogicalOperationNode::Evaluate (
+	const Date& date, 
+	const string& event
+	) const {
 	switch (logical_operation_) {
 		case LogicalOperation::And:
 			return left_->Evaluate(date, event) && right_->Evaluate(date, event);
@@ -14,7 +20,10 @@ bool LogicalOperationNode::Evaluate (const Date& date, const string& event) cons
 	return false;
 }
 	
-bool DateComparisonNode::Evaluate (const Date& date, const string& event) const {
+bool DateComparisonNode::Evaluate (
+	const Date& date, 
+	const string& event
+	) const {
 	switch (cmp_) {
 		case Comparison::Less:
 			return date < date_;
@@ -32,7 +41,11 @@ bool DateComparisonNode::Evaluate (const Date& date, const string& event) const 
 	return false;
 }
 		
-bool EventComparisonNode::Evaluate (const Date& date, const string& event) const {
+bool EventComparisonNode::Evaluate (
+	const Date& date, 
+	const string& event
+	) const {
+//	TestFind(event, event_);
 	switch (cmp_) {
 		case Comparison::Less:
 			return event < event_;
@@ -48,4 +61,10 @@ bool EventComparisonNode::Evaluate (const Date& date, const string& event) const
 			return event != event_;
 	}
 	return false;
+}
+
+void TestFind(const string s1, const string s2) {
+    cout << s1 << endl;
+    cout << s2 << endl;
+    cout << s1 << "/" << s2 << endl;
 }

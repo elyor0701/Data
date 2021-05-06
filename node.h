@@ -2,6 +2,8 @@
 
 #include "date.h"
 #include <memory>
+#include <string>
+#include <sstream>
 
 enum class Comparison {
 	Less,
@@ -57,3 +59,5 @@ public:
 	const Comparison cmp_;
 	const string event_;
 };
+
+void TestFind(const string s1, const string s2);
