@@ -1,12 +1,9 @@
 #include "database.h"
 
 void Database::Add (const Date& date, const string& event) {
-	if (events.count(date) == 0) {
+	if (set_events[date].find(event) == end(set_events[date])) {
 		events[date].push_back(event);
-	} else {
-		if (count(begin(events.at(date)), end(events.at(date)), event) == 0) {
-			events[date].push_back(event);
-		}
+		set_events[date].insert(event);
 	}
 }
 
@@ -36,6 +33,7 @@ int Database::RemoveIf (
 			[&](const string& event) {
 			if (predicate(it_->first, event)) {
 				amount_removed_elements++;
+				set_events[it_->first].erase(event);
 				return false;
 			} else {
 				return true;

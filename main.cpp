@@ -24,8 +24,8 @@ void TestParseDate ();
 void TestParseCondition ();
 
 int main() {
-    TestAll();
-    return 0;
+//    TestAll();
+//   return 0;
     Database db;
     
     for (string line; getline(cin, line); ) {

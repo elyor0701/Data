@@ -11,6 +11,7 @@
 #include <algorithm>
 #include <functional>
 #include <memory>
+#include <set>
 
 using namespace std;
 
@@ -26,6 +27,7 @@ public:
 	
 private:
 	map<Date, vector<string>> events;
+	map<Date, set<string>> set_events;
 };
 
 template <class K, class V>

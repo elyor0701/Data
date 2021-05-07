@@ -1,6 +1,6 @@
-All: test.out
-test.out: main.o date.o database.o node.o condition_parser.o condition_parser_test.o token.o
-	g++ -g main.o date.o database.o node.o condition_parser.o condition_parser_test.o token.o -Wall -Wextra -o test.out
+All: data.exe
+data.exe: main.o date.o database.o node.o condition_parser.o condition_parser_test.o token.o
+	g++ -g main.o date.o database.o node.o condition_parser.o condition_parser_test.o token.o -Wall -Wextra -o data.exe
 main.o: main.cpp
 	g++ -c main.cpp -ggdb
 date.o: date.cpp
