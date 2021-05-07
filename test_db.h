@@ -229,6 +229,15 @@ void TestsMyCustom()
         db.Print(out);
         AssertEqual("2019-12-01 a\n", out.str(), "My test 20");
     }
+    {
+    	Database db;
+    	db.Add({1, 12, 1}, "a");
+        db.Add({1, 12, 1}, "b");
+    	db.Add({2, 1, 1}, "c c");
+    	db.Add({3, 12, 3}, "e");
+        db.Add({3, 12, 3}, "f");
+    	AssertEqual(pair<Date, string>({2, 1, 1}, "c c"), db.Last({2, 12, 1}), "Test for empty space beetween chars");
+    }
 
     {
         Database db;
@@ -255,8 +264,12 @@ void TestsMyCustom()
         {
             cerr << "Тест на No entries OK" << endl;
         }
+
+        ostringstream ss;
+        ss << db.Last({2019, 12, 2});
+        AssertEqual("2019-12-02 c c", ss.str(), " My test 7.1");
         
-        AssertEqual(pair<Date, string>({2019, 12, 2}, "с с"), db.Last({2019, 12, 2}), " My test 7");
+        AssertEqual(pair<Date, string>({2019, 12, 2}, "c c"), db.Last({2019, 12, 2}), " My test 7");
 
         AssertEqual(pair<Date, string>({2019, 12, 3},"f"), db.Last({2019, 12, 4}), " My test 8");
         
@@ -402,8 +415,8 @@ void TestDatabase() {
       Date d4(2017, 2, 2);
       db.Last(d4);
       Assert(false, "Db Last 3");
-    } catch (invalid_argument e) {
-      // Pass
+    } catch (invalid_argument& e) {
+      cerr << "test for no entries in testgithub OK" << endl;
     }
 
     // Delete event and get last

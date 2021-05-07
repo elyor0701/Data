@@ -12,7 +12,6 @@
 using namespace std;
 
 string ParseEvent(istream& is) {
-  // Реализуйте эту функцию
   string event;
   is >> ws;
   getline(is, event);
@@ -25,8 +24,8 @@ void TestParseDate ();
 void TestParseCondition ();
 
 int main() {
-//    TestAll();
-//    return 0;
+    TestAll();
+    return 0;
     Database db;
     
     for (string line; getline(cin, line); ) {
@@ -123,6 +122,5 @@ void TestAll() {
     tr.RunTest(TestDateComparisonNode, "TestDateComparisonNode");
     tr.RunTest(TestEventComparisonNode, "TestEventComparisonNode");
     tr.RunTest(TestLogicalOperationNode, "TestLogicalOpeationNode");
-    tr.RunTest(TestEmptyNode, "TestEmptyNode");
-    
+    tr.RunTest(TestEmptyNode, "TestEmptyNode");  
 }

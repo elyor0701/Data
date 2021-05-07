@@ -28,9 +28,6 @@ private:
 	map<Date, vector<string>> events;
 };
 
-void TestDatabaseFind ();
-void TestDatabaseLast ();
-
 template <class K, class V>
 ostream& operator << (ostream& os, const pair<K, V>& p) {
 	os << p.first << " " << p.second;
